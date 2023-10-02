@@ -2,6 +2,7 @@ from openpyxl import Workbook
 
 
 def make_excel_report(robots_list: list[tuple[str, str, int]]) -> Workbook:
+    """Формирование excel отчета о произведенных роботах."""
     sheets = {robot[0] for robot in robots_list}
     wb = Workbook()
     for num, name in enumerate(sheets):

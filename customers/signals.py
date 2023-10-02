@@ -9,6 +9,8 @@ from robots.models import Robot
 
 @receiver(post_save, sender=Robot)
 def send_availability_notify(sender, instance, created, **kwargs):
+    """Отправка имейл оповещения покупателю о появлении нужного робота,
+    по самому раннему заказу и удаление заказа из списка ожидания."""
     order = Order.objects.filter(
         robot_serial=instance.serial
     ).select_related(

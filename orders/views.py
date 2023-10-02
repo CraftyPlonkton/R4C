@@ -12,6 +12,7 @@ from robots.models import Robot
 
 @require_http_methods(['GET'])
 def week_report(request):
+    """Отправка excel файла с отчетом о произведенных за неделю роботах."""
     queryset = Robot.objects.filter(
         created__gte=(datetime.now() - timedelta(days=7))
     ).values_list('model', 'version').distinct().annotate(count=Count('model'))

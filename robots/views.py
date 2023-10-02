@@ -12,6 +12,7 @@ from .forms import RobotCreateForm
 @csrf_exempt
 @require_http_methods(['POST'])
 def robot_create(request):
+    """Создание экземпляра модели робот на основе полученного JSON запроса."""
     try:
         json_data = json.loads(request.body.decode())
     except JSONDecodeError as error:
